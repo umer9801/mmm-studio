@@ -56,7 +56,10 @@ function AdminDashboard() {
         void navigate({ to: "/admin/login" });
         return;
       }
-      if (!res.ok) throw new Error("Failed to load contacts");
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({ error: `Server error ${res.status}` })) as { error?: string };
+        throw new Error(json.error ?? "Failed to load contacts");
+      }
       const data = await res.json() as ContactEntry[];
       setEntries(data);
     } catch (err) {

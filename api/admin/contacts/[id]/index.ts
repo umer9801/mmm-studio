@@ -1,27 +1,15 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { MongoClient, ObjectId } from "mongodb";
-import { verifyToken } from "../../login";
-
-let client: MongoClient | null = null;
-
-async function getDb() {
-  const uri = process.env.MONGODB_URI;
-  if (!uri) throw new Error("MONGODB_URI env var is not set");
-  if (!client) {
-    client = new MongoClient(uri);
-    await client.connect();
-  }
-  return client.db("mmm-studio");
-}
-
-function authenticate(req: VercelRequest): boolean {
-  const auth = req.headers.authorization;
-  if (!auth?.startsWith("Bearer ")) return false;
-  return verifyToken(auth.slice(7)).valid;
-}
+import { ObjectId } from "mongodb";
+import { authenticate } from "../../../../_lib/auth";
+import { getDb } from "../../../../_lib/db";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (!authenticate(req)) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") return res.status(200).end();
+
+  if (!authenticate(req.headers.authorization)) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
@@ -29,8 +17,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { id } = req.query as { id: string };
-
+  const id = req.query.id as string;
   if (!id || !ObjectId.isValid(id)) {
     return res.status(400).json({ error: "Invalid ID" });
   }
