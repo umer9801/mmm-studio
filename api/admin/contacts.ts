@@ -2,13 +2,13 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { MongoClient } from "mongodb";
 import { verifyToken } from "./login";
 
-const MONGODB_URI = process.env.MONGODB_URI!;
-
 let client: MongoClient | null = null;
 
 async function getDb() {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) throw new Error("MONGODB_URI env var is not set");
   if (!client) {
-    client = new MongoClient(MONGODB_URI);
+    client = new MongoClient(uri);
     await client.connect();
   }
   return client.db("mmm-studio");
