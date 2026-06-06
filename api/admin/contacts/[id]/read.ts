@@ -1,7 +1,19 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { ObjectId } from "mongodb";
-import { authenticate } from "../../../_lib/auth";
-import { getDb } from "../../../_lib/db";
+import { MongoClient, ObjectId } from "mongodb";
+
+function verifyToken(token: string): boolean {
+  try {
+    const secret = process.env.JWT_SECRET ?? "mmm-studio-secret-key-2024";
+    const parts = token.split(".");
+    if (parts.length !== 3) return false;
+    const [header, body, sig] = parts;
+    const expected = Buffer.from(secret + header + body).toString("base64url");
+    if (sig !== expected) return false;
+    const payload = JSON.parse(Buffer.from(body, "base64url").toString()) as { exp?: number };
+    if (payload.exp && Date.now() > payload.exp) return false;
+    return true;
+  } catch { return false; }
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -9,27 +21,26 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   if (req.method === "OPTIONS") return res.status(200).end();
 
-  if (!authenticate(req.headers.authorization)) {
+  const auth = req.headers.authorization;
+  if (!auth?.startsWith("Bearer ") || !verifyToken(auth.slice(7)))
     return res.status(401).json({ error: "Unauthorized" });
-  }
 
-  if (req.method !== "PATCH") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  if (req.method !== "PATCH") return res.status(405).json({ error: "Method not allowed" });
 
   const id = req.query.id as string;
-  if (!id || !ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "Invalid ID" });
-  }
+  if (!id || !ObjectId.isValid(id)) return res.status(400).json({ error: "Invalid ID" });
+
+  const MONGODB_URI = process.env.MONGODB_URI;
+  if (!MONGODB_URI) return res.status(500).json({ error: "MONGODB_URI not configured" });
 
   try {
-    const db = await getDb();
-    await db
-      .collection("contacts")
-      .updateOne({ _id: new ObjectId(id) }, { $set: { read: true } });
+    const client = new MongoClient(MONGODB_URI, { serverSelectionTimeoutMS: 8000, connectTimeoutMS: 8000 });
+    await client.connect();
+    await client.db("mmm-studio").collection("contacts").updateOne({ _id: new ObjectId(id) }, { $set: { read: true } });
+    await client.close();
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error("Mark read error:", err);
+    console.error("Mark read error:", (err as Error).message);
     return res.status(500).json({ error: "Failed to update" });
   }
 }
