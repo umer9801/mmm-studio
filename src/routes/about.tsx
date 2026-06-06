@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import founder from "@/assets/founder.jpg";
-import aboutBride from "@/assets/about-bride.jpg";
+import founder from "@/assets/1.jpeg";
+import aboutBride from "@/assets/2.jpeg";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionLabel } from "@/components/site/SectionLabel";
 

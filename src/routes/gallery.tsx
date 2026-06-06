@@ -1,14 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { X } from "lucide-react";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
-import aboutBride from "@/assets/about-bride.jpg";
-import heroBride from "@/assets/hero-bride.jpg";
+import img1  from "@/assets/1.jpeg";
+import img2  from "@/assets/2.jpeg";
+import img3  from "@/assets/3.jpeg";
+import img4  from "@/assets/4.jpeg";
+import img5  from "@/assets/5.jpeg";
+import img6  from "@/assets/6.jpeg";
+import img7  from "@/assets/7.jpeg";
+import img8  from "@/assets/8.jpeg";
+import img9  from "@/assets/9.jpeg";
+import img10 from "@/assets/10.jpeg";
+import img11 from "@/assets/11.jpeg";
+import img12 from "@/assets/12.jpeg";
+import img13 from "@/assets/13.jpeg";
+import img14 from "@/assets/14.jpeg";
+import img15 from "@/assets/15.jpeg";
+import img16 from "@/assets/16.jpeg";
+import img17 from "@/assets/17.jpeg";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionLabel } from "@/components/site/SectionLabel";
 
@@ -19,18 +28,23 @@ export const Route = createFileRoute("/gallery")({
 type Item = { src: string; cat: string; alt: string };
 
 const items: Item[] = [
-  { src: heroBride, cat: "Bridal", alt: "Red bridal lehenga" },
-  { src: g1, cat: "Bridal", alt: "Pink bridal portrait" },
-  { src: g2, cat: "Reception", alt: "Champagne reception gown" },
-  { src: g3, cat: "Henna", alt: "Bridal henna" },
-  { src: g4, cat: "Hair Styling", alt: "Bridal updo with flowers" },
-  { src: g5, cat: "Engagement", alt: "Pastel engagement look" },
-  { src: g6, cat: "Editorial", alt: "Editorial beauty closeup" },
-  { src: aboutBride, cat: "Editorial", alt: "Rose gold smokey eye" },
-  { src: g1, cat: "Bridal", alt: "Bridal" },
-  { src: g4, cat: "Hair Styling", alt: "Hair" },
-  { src: g2, cat: "Reception", alt: "Reception" },
-  { src: g5, cat: "Engagement", alt: "Engagement" },
+  { src: img1,  cat: "Bridal",       alt: "Bridal portrait 1" },
+  { src: img2,  cat: "Bridal",       alt: "Bridal portrait 2" },
+  { src: img3,  cat: "Bridal",       alt: "Bridal portrait 3" },
+  { src: img4,  cat: "Reception",    alt: "Reception look 1" },
+  { src: img5,  cat: "Reception",    alt: "Reception look 2" },
+  { src: img6,  cat: "Engagement",   alt: "Engagement look 1" },
+  { src: img7,  cat: "Engagement",   alt: "Engagement look 2" },
+  { src: img8,  cat: "Henna",        alt: "Bridal henna 1" },
+  { src: img9,  cat: "Henna",        alt: "Bridal henna 2" },
+  { src: img10, cat: "Hair Styling", alt: "Hair styling 1" },
+  { src: img11, cat: "Hair Styling", alt: "Hair styling 2" },
+  { src: img12, cat: "Editorial",    alt: "Editorial look 1" },
+  { src: img13, cat: "Editorial",    alt: "Editorial look 2" },
+  { src: img14, cat: "Bridal",       alt: "Bridal portrait 4" },
+  { src: img15, cat: "Reception",    alt: "Reception look 3" },
+  { src: img16, cat: "Engagement",   alt: "Engagement look 3" },
+  { src: img17, cat: "Editorial",    alt: "Editorial look 3" },
 ];
 
 const cats = ["All", "Bridal", "Reception", "Engagement", "Henna", "Hair Styling", "Editorial"] as const;
@@ -54,8 +68,9 @@ function Gallery() {
         </div>
       </section>
 
-      <section className="bg-ivory pb-28">
+      <section className="bg-ivory pb-28 pt-10">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
+          {/* Filter tabs */}
           <div className="mb-10 flex flex-wrap gap-2">
             {cats.map((c) => (
               <button
@@ -72,6 +87,7 @@ function Gallery() {
             ))}
           </div>
 
+          {/* Masonry grid */}
           <div className="columns-2 gap-3 md:columns-3 lg:columns-4 [&>*]:mb-3">
             {filtered.map((it, i) => (
               <button
@@ -95,6 +111,7 @@ function Gallery() {
         </div>
       </section>
 
+      {/* Lightbox */}
       {lightbox && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-noir/90 p-6 backdrop-blur-md animate-fade-up"

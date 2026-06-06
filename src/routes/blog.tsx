@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import blog1 from "@/assets/blog-1.jpg";
-import blog2 from "@/assets/blog-2.jpg";
-import blog3 from "@/assets/blog-3.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g6 from "@/assets/gallery-6.jpg";
+import blog1 from "@/assets/9.jpeg";
+import blog2 from "@/assets/10.jpeg";
+import blog3 from "@/assets/11.jpeg";
+import g1 from "@/assets/12.jpeg";
+import g6 from "@/assets/13.jpeg";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionLabel } from "@/components/site/SectionLabel";
 
