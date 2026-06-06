@@ -10,9 +10,11 @@ export async function getDb() {
   if (!uri) throw new Error("MONGODB_URI environment variable is not set");
   if (!client) {
     client = new MongoClient(uri, {
-      serverSelectionTimeoutMS: 10000,
-      connectTimeoutMS: 10000,
-      socketTimeoutMS: 15000,
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
+      socketTimeoutMS: 10000,
+      // Force direct SRV resolution for Vercel compatibility
+      maxPoolSize: 1,
     });
     await client.connect();
   }

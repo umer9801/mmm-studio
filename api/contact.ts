@@ -8,15 +8,14 @@ function getTransporter() {
   if (!user || !pass) throw new Error("SMTP_USER or SMTP_PASS env vars are not set");
 
   return nodemailer.createTransport({
-    host: "mail.solvixcore.com",
-    port: 587,           // use STARTTLS (587) instead of SSL (465) — more reliable on cloud
-    secure: false,
-    requireTLS: true,
+    host: "smtp.hostinger.com",
+    port: 465,
+    secure: true,       // SSL on port 465
     auth: { user, pass },
     connectionTimeout: 15000,
     greetingTimeout: 15000,
     socketTimeout: 20000,
-    tls: { rejectUnauthorized: false }, // allow self-signed certs on shared hosting
+    tls: { rejectUnauthorized: false },
   });
 }
 
