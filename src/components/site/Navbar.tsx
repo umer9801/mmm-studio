@@ -26,15 +26,17 @@ export function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass shadow-[0_4px_30px_rgba(0,0,0,0.04)]" : "bg-transparent"
+        scrolled
+          ? "glass shadow-[0_4px_30px_rgba(0,0,0,0.04)]"
+          : "bg-gradient-to-b from-noir/60 to-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" className="group flex items-center gap-2">
-          <span className="font-display text-2xl tracking-wider text-foreground">
+          <span className={`font-display text-2xl tracking-wider transition-colors duration-500 ${scrolled ? "text-foreground" : "text-ivory"}`}>
             MMM<span className="text-gradient-luxe"> Studio</span>
           </span>
-          <span className="hidden text-[10px] uppercase tracking-[0.4em] text-muted-foreground md:inline">
+          <span className={`hidden text-[10px] uppercase tracking-[0.4em] md:inline transition-colors duration-500 ${scrolled ? "text-muted-foreground" : "text-ivory/70"}`}>
             by Moni
           </span>
         </Link>
@@ -44,8 +46,8 @@ export function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              className="reveal-line text-[12px] font-medium uppercase tracking-[0.22em] text-foreground/80 hover:text-foreground"
-              activeProps={{ className: "text-foreground reveal-line" }}
+              className={`reveal-line text-[12px] font-medium uppercase tracking-[0.22em] transition-colors duration-500 ${scrolled ? "text-foreground/80 hover:text-foreground" : "text-ivory/90 hover:text-ivory"}`}
+              activeProps={{ className: `reveal-line text-[12px] font-medium uppercase tracking-[0.22em] ${scrolled ? "text-foreground" : "text-ivory"}` }}
             >
               {l.label}
             </Link>
@@ -61,7 +63,7 @@ export function Navbar() {
           </Link>
           <button
             aria-label="Menu"
-            className="lg:hidden"
+            className={`lg:hidden transition-colors duration-500 ${scrolled ? "text-foreground" : "text-ivory"}`}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X /> : <Menu />}

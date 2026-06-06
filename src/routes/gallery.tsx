@@ -47,12 +47,9 @@ const items: Item[] = [
   { src: img17, cat: "Editorial",    alt: "Editorial look 3" },
 ];
 
-const cats = ["All", "Bridal", "Reception", "Engagement", "Henna", "Hair Styling", "Editorial"] as const;
-
 function Gallery() {
-  const [active, setActive] = useState<(typeof cats)[number]>("All");
   const [lightbox, setLightbox] = useState<Item | null>(null);
-  const filtered = active === "All" ? items : items.filter((i) => i.cat === active);
+  const filtered = items;
 
   return (
     <>
@@ -70,24 +67,7 @@ function Gallery() {
 
       <section className="bg-ivory pb-28 pt-10">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          {/* Filter tabs */}
-          <div className="mb-10 flex flex-wrap gap-2">
-            {cats.map((c) => (
-              <button
-                key={c}
-                onClick={() => setActive(c)}
-                className={`rounded-full border px-5 py-2 text-[11px] uppercase tracking-[0.25em] transition ${
-                  active === c
-                    ? "border-transparent bg-gradient-luxe text-primary-foreground shadow-luxe"
-                    : "border-border bg-card hover:border-champagne"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-
-          {/* Masonry grid */}
+        {/* Masonry grid */}
           <div className="columns-2 gap-3 md:columns-3 lg:columns-4 [&>*]:mb-3">
             {filtered.map((it, i) => (
               <button
