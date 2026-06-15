@@ -291,6 +291,10 @@ function Home() {
                     loading="lazy"
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                   />
+                  {/* Watermark */}
+                  <span className="pointer-events-none absolute bottom-2 right-3 font-display text-[11px] italic tracking-widest text-white/50 select-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                    MMM Studio
+                  </span>
                   <div className="absolute inset-0 bg-gradient-to-t from-noir/70 via-transparent opacity-0 transition group-hover:opacity-100" />
                 </div>
               </Reveal>
