@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
-import heroBride from "@/assets/hero-bride.jpg";
+import { useEffect, useState } from "react";
+import heroBride from "@/assets/hero.jpeg";
 import aboutBride from "@/assets/2.jpeg";
 import gallery1 from "@/assets/3.jpeg";
 import gallery2 from "@/assets/4.jpeg";
@@ -27,6 +28,44 @@ const services = [
 ];
 
 const galleryPreview = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+
+const slogans = [
+  "Best Aesthetics Makeup & Hair Stylist in Toronto",
+  "Where Every Bride Becomes a Masterpiece",
+  "Luxury Bridal Artistry — Crafted for You",
+  "Toronto's Most Trusted Bridal Beauty Studio",
+  "Timeless Transformations for Your Perfect Day",
+  "Pakistani · Indian · Bengali Bridal Specialists",
+  "20+ Years of Bridal Excellence in Toronto",
+];
+
+function RotatingSlogan() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slogans.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative h-8 overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={index}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="absolute inset-0 text-base leading-relaxed text-ivory/80 whitespace-nowrap"
+        >
+          {slogans[index]}
+        </motion.p>
+      </AnimatePresence>
+    </div>
+  );
+}
 
 function Counter({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) {
   return (
@@ -79,10 +118,9 @@ function Home() {
                 <br />
                 in Toronto
               </h1>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-ivory/80">
-                Enhancing beauty with timeless elegance, premium artistry, and
-                unforgettable bridal transformations crafted for your most cinematic day.
-              </p>
+              <div className="mt-6 max-w-lg">
+                <RotatingSlogan />
+              </div>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   to="/booking"

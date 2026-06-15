@@ -18,6 +18,11 @@ import img14 from "@/assets/14.jpeg";
 import img15 from "@/assets/15.jpeg";
 import img16 from "@/assets/16.jpeg";
 import img17 from "@/assets/17.jpeg";
+import img18 from "@/assets/18.jpeg";
+import img19 from "@/assets/19.jpeg";
+import img20 from "@/assets/20.jpeg";
+import img21 from "@/assets/21.jpeg";
+import img22 from "@/assets/22.jpeg";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionLabel } from "@/components/site/SectionLabel";
 
@@ -25,31 +30,52 @@ export const Route = createFileRoute("/gallery")({
   component: Gallery,
 });
 
-type Item = { src: string; cat: string; alt: string };
+type Category =
+  | "All"
+  | "Pakistani Looks"
+  | "Indian Looks"
+  | "Bengali Looks";
 
+type Item = { src: string; cat: Category; alt: string };
+
+// Swapped: what was "Bengali Looks" → now "Pakistani Looks" and vice versa
+// Redistributed all images across only 3 categories
 const items: Item[] = [
-  { src: img1,  cat: "Bridal",       alt: "Bridal portrait 1" },
-  { src: img2,  cat: "Bridal",       alt: "Bridal portrait 2" },
-  { src: img3,  cat: "Bridal",       alt: "Bridal portrait 3" },
-  { src: img4,  cat: "Reception",    alt: "Reception look 1" },
-  { src: img5,  cat: "Reception",    alt: "Reception look 2" },
-  { src: img6,  cat: "Engagement",   alt: "Engagement look 1" },
-  { src: img7,  cat: "Engagement",   alt: "Engagement look 2" },
-  { src: img8,  cat: "Henna",        alt: "Bridal henna 1" },
-  { src: img9,  cat: "Henna",        alt: "Bridal henna 2" },
-  { src: img10, cat: "Hair Styling", alt: "Hair styling 1" },
-  { src: img11, cat: "Hair Styling", alt: "Hair styling 2" },
-  { src: img12, cat: "Editorial",    alt: "Editorial look 1" },
-  { src: img13, cat: "Editorial",    alt: "Editorial look 2" },
-  { src: img14, cat: "Bridal",       alt: "Bridal portrait 4" },
-  { src: img15, cat: "Reception",    alt: "Reception look 3" },
-  { src: img16, cat: "Engagement",   alt: "Engagement look 3" },
-  { src: img17, cat: "Editorial",    alt: "Editorial look 3" },
+  { src: img1,  cat: "Pakistani Looks", alt: "Pakistani bridal look 1" },
+  { src: img2,  cat: "Indian Looks",    alt: "Indian bridal look 1" },
+  { src: img3,  cat: "Pakistani Looks", alt: "Pakistani bridal look 2" },
+  { src: img4,  cat: "Bengali Looks",   alt: "Bengali bridal look 1" },
+  { src: img5,  cat: "Indian Looks",    alt: "Indian bridal look 2" },
+  { src: img6,  cat: "Pakistani Looks", alt: "Pakistani bridal look 3" },
+  { src: img7,  cat: "Bengali Looks",   alt: "Bengali bridal look 2" },
+  { src: img8,  cat: "Indian Looks",    alt: "Indian bridal look 3" },
+  { src: img9,  cat: "Pakistani Looks", alt: "Pakistani bridal look 4" },
+  { src: img10, cat: "Bengali Looks",   alt: "Bengali bridal look 3" },
+  { src: img11, cat: "Indian Looks",    alt: "Indian bridal look 4" },
+  { src: img12, cat: "Pakistani Looks", alt: "Pakistani bridal look 5" },
+  { src: img13, cat: "Bengali Looks",   alt: "Bengali bridal look 4" },
+  { src: img14, cat: "Bengali Looks",   alt: "Bengali bridal look 5" },
+  { src: img15, cat: "Indian Looks",    alt: "Indian bridal look 5" },
+  { src: img16, cat: "Pakistani Looks", alt: "Pakistani bridal look 6" },
+  { src: img17, cat: "Indian Looks",    alt: "Indian bridal look 6" },
+  { src: img18, cat: "Bengali Looks",   alt: "Bengali bridal look 6" },
+  { src: img19, cat: "Pakistani Looks", alt: "Pakistani bridal look 7" },
+  { src: img20, cat: "Indian Looks",    alt: "Indian bridal look 7" },
+  { src: img21, cat: "Pakistani Looks", alt: "Pakistani bridal look 8" },
+  { src: img22, cat: "Bengali Looks",   alt: "Bengali bridal look 7" },
+];
+
+const cats: Category[] = [
+  "All",
+  "Pakistani Looks",
+  "Indian Looks",
+  "Bengali Looks",
 ];
 
 function Gallery() {
+  const [active, setActive] = useState<Category>("All");
   const [lightbox, setLightbox] = useState<Item | null>(null);
-  const filtered = items;
+  const filtered = active === "All" ? items : items.filter((i) => i.cat === active);
 
   return (
     <>
@@ -67,11 +93,29 @@ function Gallery() {
 
       <section className="bg-ivory pb-28 pt-10">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* Masonry grid */}
+
+          {/* Category filter tabs */}
+          <div className="mb-10 flex flex-wrap gap-2">
+            {cats.map((c) => (
+              <button
+                key={c}
+                onClick={() => setActive(c)}
+                className={`rounded-full border px-5 py-2 text-[11px] uppercase tracking-[0.25em] transition ${
+                  active === c
+                    ? "border-transparent bg-gradient-luxe text-primary-foreground shadow-luxe"
+                    : "border-border bg-card hover:border-champagne"
+                }`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+
+          {/* Masonry grid */}
           <div className="columns-2 gap-3 md:columns-3 lg:columns-4 [&>*]:mb-3">
             {filtered.map((it, i) => (
               <button
-                key={i}
+                key={`${it.alt}-${i}`}
                 onClick={() => setLightbox(it)}
                 className="group relative block w-full overflow-hidden rounded-sm break-inside-avoid focus:outline-none"
               >
@@ -88,6 +132,12 @@ function Gallery() {
               </button>
             ))}
           </div>
+
+          {filtered.length === 0 && (
+            <div className="py-20 text-center text-muted-foreground">
+              No images in this category yet.
+            </div>
+          )}
         </div>
       </section>
 
@@ -104,12 +154,16 @@ function Gallery() {
           >
             <X size={18} />
           </button>
-          <img
-            src={lightbox.src}
-            alt={lightbox.alt}
-            className="max-h-[88vh] max-w-[92vw] rounded-sm object-contain shadow-luxe"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <div className="flex flex-col items-center gap-3" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={lightbox.src}
+              alt={lightbox.alt}
+              className="max-h-[84vh] max-w-[92vw] rounded-sm object-contain shadow-luxe"
+            />
+            <span className="text-[10px] uppercase tracking-[0.3em] text-champagne">
+              {lightbox.cat}
+            </span>
+          </div>
         </div>
       )}
     </>
