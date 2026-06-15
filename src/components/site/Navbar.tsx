@@ -32,12 +32,12 @@ export function Navbar() {
           : "bg-gradient-to-b from-noir/60 to-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 md:px-10 md:py-4">
         <Link to="/" className="group flex items-center">
           <img
             src={logo}
             alt="MMM Studio by Moni"
-            className="h-16 w-auto object-contain"
+            className={`h-14 w-auto object-contain transition-all duration-500 md:h-16 ${!scrolled ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" : ""}`}
           />
         </Link>
 
