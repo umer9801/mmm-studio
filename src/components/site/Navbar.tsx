@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -32,13 +33,12 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        <Link to="/" className="group flex items-center gap-2">
-          <span className={`font-display text-2xl tracking-wider transition-colors duration-500 ${scrolled ? "text-foreground" : "text-ivory"}`}>
-            MMM<span className="text-gradient-luxe"> Studio</span>
-          </span>
-          <span className={`hidden text-[10px] uppercase tracking-[0.4em] md:inline transition-colors duration-500 ${scrolled ? "text-muted-foreground" : "text-ivory/70"}`}>
-            by Moni
-          </span>
+        <Link to="/" className="group flex items-center">
+          <img
+            src={logo}
+            alt="MMM Studio by Moni"
+            className="h-16 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">

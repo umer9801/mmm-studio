@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -7,9 +8,9 @@ export function Footer() {
       <div className="gold-divider" />
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-4 md:px-10">
         <div className="md:col-span-2">
-          <h3 className="font-display text-3xl text-ivory">
-            MMM Studio <span className="text-gradient-luxe">by Moni</span>
-          </h3>
+          <Link to="/">
+            <img src={logo} alt="MMM Studio by Moni" className="h-20 w-auto object-contain brightness-0 invert" />
+          </Link>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-ivory/70">
             Toronto's premier destination for bridal artistry. Crafting timeless,
             unforgettable beauty for the most important day of your life.
