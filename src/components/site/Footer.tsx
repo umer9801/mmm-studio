@@ -11,7 +11,7 @@ export function Footer() {
             MMM Studio <span className="text-gradient-luxe">by Moni</span>
           </h3>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-ivory/70">
-            Toronto's premier destination for luxury bridal artistry. Crafting timeless,
+            Toronto's premier destination for bridal artistry. Crafting timeless,
             unforgettable beauty for the most important day of your life.
           </p>
           <div className="mt-6 flex gap-4">

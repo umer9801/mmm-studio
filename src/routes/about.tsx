@@ -11,7 +11,7 @@ export const Route = createFileRoute("/about")({
 const timeline = [
   { y: "2005", t: "Journey begins", d: "Moni begins her career in bridal beauty, training across South Asia and the Middle East." },
   { y: "2014", t: "Toronto arrival", d: "Moni brings her artistry to Canada, building a reputation in the Toronto bridal scene." },
-  { y: "2018", t: "MMM Studio founded", d: "A private atelier opens, offering intimate, luxury bridal experiences." },
+  { y: "2018", t: "MMM Studio founded", d: "A private atelier opens, offering intimate, premium bridal experiences." },
   { y: "2024", t: "800+ brides served", d: "Crosses 800 bridal transformations with a team of elite licensed professionals." },
 ];
 
@@ -54,7 +54,7 @@ function About() {
                   She is joined by a licensed hairstylist with over 40 years of experience
                   and a Canadian professional license — bringing unparalleled expertise in
                   cuts, colour, treatments, and bridal styling. Together, they offer a
-                  complete luxury bridal experience under one roof.
+                  complete premium bridal experience under one roof.
                 </p>
               </div>
             </Reveal>

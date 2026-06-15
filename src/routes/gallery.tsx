@@ -38,31 +38,29 @@ type Category =
 
 type Item = { src: string; cat: Category; alt: string };
 
-// Swapped: what was "Bengali Looks" → now "Pakistani Looks" and vice versa
-// Redistributed all images across only 3 categories
 const items: Item[] = [
-  { src: img1,  cat: "Pakistani Looks", alt: "Pakistani bridal look 1" },
-  { src: img2,  cat: "Indian Looks",    alt: "Indian bridal look 1" },
-  { src: img3,  cat: "Pakistani Looks", alt: "Pakistani bridal look 2" },
-  { src: img4,  cat: "Bengali Looks",   alt: "Bengali bridal look 1" },
-  { src: img5,  cat: "Indian Looks",    alt: "Indian bridal look 2" },
-  { src: img6,  cat: "Pakistani Looks", alt: "Pakistani bridal look 3" },
-  { src: img7,  cat: "Bengali Looks",   alt: "Bengali bridal look 2" },
-  { src: img8,  cat: "Indian Looks",    alt: "Indian bridal look 3" },
-  { src: img9,  cat: "Pakistani Looks", alt: "Pakistani bridal look 4" },
-  { src: img10, cat: "Bengali Looks",   alt: "Bengali bridal look 3" },
-  { src: img11, cat: "Indian Looks",    alt: "Indian bridal look 4" },
-  { src: img12, cat: "Pakistani Looks", alt: "Pakistani bridal look 5" },
-  { src: img13, cat: "Bengali Looks",   alt: "Bengali bridal look 4" },
-  { src: img14, cat: "Bengali Looks",   alt: "Bengali bridal look 5" },
-  { src: img15, cat: "Indian Looks",    alt: "Indian bridal look 5" },
-  { src: img16, cat: "Pakistani Looks", alt: "Pakistani bridal look 6" },
-  { src: img17, cat: "Indian Looks",    alt: "Indian bridal look 6" },
-  { src: img18, cat: "Bengali Looks",   alt: "Bengali bridal look 6" },
+  { src: img1,  cat: "Indian Looks",    alt: "Indian bridal look 1" },
+  { src: img2,  cat: "Indian Looks",    alt: "Indian bridal look 2" },
+  { src: img3,  cat: "Indian Looks",    alt: "Indian bridal look 3" },
+  { src: img4,  cat: "Indian Looks",    alt: "Indian bridal look 4" },
+  { src: img5,  cat: "Indian Looks",    alt: "Indian bridal look 5" },
+  { src: img6,  cat: "Indian Looks",    alt: "Indian bridal look 6" },
+  { src: img7,  cat: "Bengali Looks",   alt: "Bengali bridal look 1" },
+  { src: img8,  cat: "Bengali Looks",   alt: "Bengali bridal look 2" },
+  { src: img9,  cat: "Bengali Looks",   alt: "Bengali bridal look 3" },
+  { src: img10, cat: "Bengali Looks",   alt: "Bengali bridal look 4" },
+  { src: img11, cat: "Bengali Looks",   alt: "Bengali bridal look 5" },
+  { src: img12, cat: "Pakistani Looks", alt: "Pakistani bridal look 1" },
+  { src: img13, cat: "Pakistani Looks", alt: "Pakistani bridal look 2" },
+  { src: img14, cat: "Indian Looks",    alt: "Indian bridal look 7" },
+  { src: img15, cat: "Pakistani Looks", alt: "Pakistani bridal look 3" },
+  { src: img16, cat: "Pakistani Looks", alt: "Pakistani bridal look 4" },
+  { src: img17, cat: "Pakistani Looks", alt: "Pakistani bridal look 5" },
+  { src: img18, cat: "Pakistani Looks", alt: "Pakistani bridal look 6" },
   { src: img19, cat: "Pakistani Looks", alt: "Pakistani bridal look 7" },
-  { src: img20, cat: "Indian Looks",    alt: "Indian bridal look 7" },
-  { src: img21, cat: "Pakistani Looks", alt: "Pakistani bridal look 8" },
-  { src: img22, cat: "Bengali Looks",   alt: "Bengali bridal look 7" },
+  { src: img20, cat: "Pakistani Looks", alt: "Pakistani bridal look 8" },
+  { src: img21, cat: "Pakistani Looks", alt: "Pakistani bridal look 9" },
+  { src: img22, cat: "Pakistani Looks", alt: "Pakistani bridal look 10" },
 ];
 
 const cats: Category[] = [

@@ -32,7 +32,7 @@ const galleryPreview = [gallery1, gallery2, gallery3, gallery4, gallery5, galler
 const slogans = [
   "Best Aesthetics Makeup & Hair Stylist in Toronto",
   "Where Every Bride Becomes a Masterpiece",
-  "Luxury Bridal Artistry — Crafted for You",
+  "Bridal Artistry — Crafted for You",
   "Toronto's Most Trusted Bridal Beauty Studio",
   "Timeless Transformations for Your Perfect Day",
   "Pakistani · Indian · Bengali Bridal Specialists",
@@ -108,13 +108,13 @@ function Home() {
               <div className="mb-6 flex items-center gap-3">
                 <Sparkles size={14} className="text-champagne" />
                 <span className="text-[11px] uppercase tracking-[0.4em] text-champagne">
-                  Toronto · Luxury Bridal Studio
+                  Toronto · Best Aesthetics Studio
                 </span>
               </div>
               <h1 className="font-display text-5xl leading-[1.05] text-ivory md:text-7xl">
-                Luxury Bridal
+                Best Aesthetics Makeup
                 <br />
-                <span className="italic text-gradient-luxe">Makeovers</span>
+                <span className="italic text-gradient-luxe">&amp; Hair Stylist</span>
                 <br />
                 in Toronto
               </h1>

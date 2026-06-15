@@ -12,7 +12,7 @@ const faqs = [
   { q: "How far in advance should I book?", a: "We recommend reserving your bridal date 6–12 months in advance, especially for peak wedding season (May–October). A 30% deposit secures your date." },
   { q: "Do you offer trials?", a: "Yes. Trials are included in our Gold, Platinum, and Royal packages. Trials can also be booked separately for $185 and credited to your final invoice when you book." },
   { q: "Do you travel to my venue?", a: "Absolutely. We service all of the GTA at no extra charge. Travel beyond Toronto and destination weddings are available with a custom proposal." },
-  { q: "What products do you use?", a: "A curated library of luxury and editorial-grade products including Charlotte Tilbury, Pat McGrath, Dior, NARS, MAC Pro, Huda Beauty, and Suqqu." },
+  { q: "What products do you use?", a: "A curated library of premium and editorial-grade products including Charlotte Tilbury, Pat McGrath, Dior, NARS, MAC Pro, Huda Beauty, and Suqqu." },
   { q: "Can you accommodate multiple looks in one day?", a: "Yes. Many brides choose 2–3 looks (ceremony, reception, send-off). Pricing is adjusted to include touch-ups and changeovers." },
   { q: "Do you offer makeup for guests and family?", a: "Of course. Family glam can be added to any package or booked individually. We staff a second or third artist for larger parties." },
   { q: "What is your cancellation policy?", a: "Deposits are non-refundable but transferable to a future date within 12 months, subject to availability." },
