@@ -46,14 +46,16 @@ function About() {
               <div className="mt-10 space-y-4 text-base leading-relaxed text-muted-foreground">
                 <p>
                   With over 20 years of experience — including more than a decade serving
-                  Canadian brides — Moni has built MMM Studio into a destination for women
+                  Canadian brides — Kotha Moni has built MMM Studio into a destination for women
                   who expect excellence. Her artistry blends international training with
-                  an intimate understanding of Toronto's diverse bridal traditions.
+                  an intimate understanding of Toronto's diverse bridal traditions including
+                  Pakistani, Indian, and Bengali bridal styles.
                 </p>
                 <p>
                   She is joined by a licensed hairstylist with over 40 years of experience
                   and a Canadian professional license — bringing unparalleled expertise in
-                  cuts, colour, treatments, and bridal styling. Together, they offer a
+                  cuts, colour, treatments, and bridal styling. All other artists on the team
+                  are experienced professionals. Together, they offer a
                   complete premium bridal experience under one roof.
                 </p>
               </div>
